@@ -4,4 +4,4 @@ Followed steps here for basic Lambda setup: https://aws.amazon.com/blogs/opensou
 
     cargo build --release --target x86_64-unknown-linux-musl
 
-    zip -j rust.zip ./target/x86_64-unknown-linux-musl/release/bootstrap
+    zip -j rust.zip ./target/x86_64-unknown-linux-musl/release/bootstrap graph.json
