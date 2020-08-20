@@ -46,9 +46,6 @@ impl From<&Node> for ApiNode {
 
 fn main() -> Result<(), Box<dyn Error>> {
     simple_logger::init_with_level(log::Level::Info)?;
-    // ERROR: we're getting the following error in AWS Lambda:
-    //
-    // Os { code: 2, kind: NotFound, message: "No such file or directory" }
     INSTANCE.set(Graph::new().unwrap()).ok();
     lambda!(my_handler);
 
