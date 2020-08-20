@@ -1,0 +1,87 @@
+[
+  {
+    "id": "a",
+    "reward": 100,
+    "duration": 1,
+    "children": ["e","c"]
+  },
+  {
+    "id": "b",
+    "reward": 1000,
+    "duration": 1,
+    "children": ["c"]
+  },
+  {
+    "id": "c",
+    "reward": 0,
+    "duration": 1,
+    "children": ["f","g"]
+  },
+  {
+    "id": "e",
+    "reward": 200,
+    "duration": 1,
+    "children": ["i", "j"]
+  },
+  {
+    "id": "f",
+    "reward": 1000,
+    "duration": 5,
+    "children": []
+  },
+  {
+    "id": "g",
+    "reward": 300,
+    "duration": 1,
+    "children": ["s", "t"]
+  },
+  {
+    "id": "i",
+    "reward": 50,
+    "duration": 1,
+    "children": ["u", "v"]
+  },
+  {
+    "id": "j",
+    "reward": 100,
+    "duration": 1,
+    "children": ["w", "x"]
+  },
+  {
+    "id": "s",
+    "reward": 100,
+    "duration": 5,
+    "children": []
+  },
+  {
+    "id": "t",
+    "reward": 200,
+    "duration": 5,
+    "children": []
+  },
+  {
+    "id": "u",
+    "reward": 300,
+    "duration": 5,
+    "children": []
+  },
+  {
+    "id": "v",
+    "reward": 400,
+    "duration": 5,
+    "children": []
+  },
+  {
+    "id": "w",
+    "reward": 500,
+    "duration": 5,
+    "children": []
+  },
+  {
+    "id": "x",
+    "reward": 600,
+    "duration": 5,
+    "children": []
+  }
+]
+

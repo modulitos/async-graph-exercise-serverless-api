@@ -1,10 +1,14 @@
 #[macro_use]
 extern crate lambda_runtime as lambda;
 #[macro_use]
-extern crate serde_derive;
-#[macro_use]
 extern crate log;
+use serde::{Serialize, Deserialize};
 extern crate simple_logger;
+use once_cell::sync::OnceCell;
+
+mod graph;
+
+use crate::graph::{Graph, Node, NodeId, Result};
 
 use lambda::error::HandlerError;
 
@@ -21,6 +25,9 @@ struct CustomOutput {
     message: String,
 }
 
+// The entry point of our bootstrap executable. This is the code that will run when Lambda starts
+// our function:
+
 fn main() -> Result<(), Box<dyn Error>> {
     simple_logger::init_with_level(log::Level::Info)?;
     lambda!(my_handler);
@@ -35,6 +42,6 @@ fn my_handler(e: CustomEvent, c: lambda::Context) -> Result<CustomOutput, Handle
     }
 
     Ok(CustomOutput {
-        message: format!("Hello, {}!", e.first_name),
+        message: format!("Hello2, {}!", e.first_name),
     })
 }
