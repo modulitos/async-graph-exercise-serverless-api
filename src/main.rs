@@ -2,9 +2,12 @@
 extern crate lambda_runtime as lambda;
 #[macro_use]
 extern crate log;
-use serde::{Serialize, Deserialize};
+use serde::{Deserialize, Serialize};
 extern crate simple_logger;
 use once_cell::sync::OnceCell;
+
+use std::{thread, time};
+use tokio::task;
 
 mod graph;
 
@@ -40,7 +43,6 @@ impl From<&Node> for ApiNode {
     }
 }
 
-
 // The entry point of our bootstrap executable. This is the code that will run when Lambda starts
 // our function:
 
@@ -55,7 +57,12 @@ fn main() -> Result<(), Box<dyn Error>> {
 fn my_handler(e: CustomEvent, c: lambda::Context) -> Result<ApiNode, HandlerError> {
     let graph = INSTANCE.get().expect("cannot get graph");
 
-    if let Some(node) = graph.get(e.first_name) {
+    if let Some(node) = graph.get(e.node_id) {
+        task::block_in_place(|| {
+            // sleep here to mimic a compute-heavy task.
+            // TODO: sleep the task, instead of the whole thread!
+            thread::sleep(time::Duration::from_secs(node.duration));
+        });
         Ok(ApiNode::from(node))
     } else {
         error!("No node found in request {}", c.aws_request_id);
