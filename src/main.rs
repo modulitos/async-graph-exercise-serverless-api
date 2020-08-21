@@ -19,8 +19,8 @@ use std::error::Error;
 
 #[derive(Deserialize, Clone)]
 struct CustomEvent {
-    #[serde(rename = "firstName")]
-    first_name: NodeId,
+    #[serde(rename = "nodeId")]
+    node_id: NodeId,
 }
 
 // Inspired by this implementation: https://github.com/awslabs/aws-lambda-rust-runtime/issues/123
